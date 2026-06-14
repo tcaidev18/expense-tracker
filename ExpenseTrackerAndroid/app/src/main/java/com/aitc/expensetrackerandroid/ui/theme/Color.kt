@@ -24,6 +24,9 @@ val Gray90 = Color(0xFFE2E2E5)
 val Gray95 = Color(0xFFF0F0F3)
 val Gray99 = Color(0xFFFFFBFF)
 
+val SplashBackground = Color(0xFFFFFFFF)
+val SplashBrandText = Color(0xFF3A6FA8)
+
 val SuccessGreen = Color(0xFF2E7D32)
 val ErrorRed = Color(0xFFC62828)
 val WarningOrange = Color(0xFFF57C00)
@@ -50,3 +53,8 @@ val IncomeGreenDark = Color(0xFF81C784)
 val ExpenseRedDark = Color(0xFFE57373)
 val WarningOrangeDark = Color(0xFFFFB74D)
 val SuccessGreenDark = Color(0xFF81C784)
+
+val PrimaryColor = Color(0xFF0058BD)
+val HeadingColor = Color(0xFF191C1E)
+val TextColor = Color(0xFF414754)
+val BackgroundColor = Color(0xFFF7F9FC)

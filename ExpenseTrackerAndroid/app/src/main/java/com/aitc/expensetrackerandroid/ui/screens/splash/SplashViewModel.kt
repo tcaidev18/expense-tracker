@@ -30,7 +30,7 @@ class SplashViewModel @Inject constructor(
         launchSafe(onError = { message -> _uiState.updateState { error(message) } }) {
             _uiState.updateState { copy(isLoading = true, errorMessage = null) }
             onIo { delay(SPLASH_DELAY_MS) }
-            _uiState.updateState { success(SplashUiState(isReady = true)) }
+//            _uiState.updateState { success(SplashUiState(isReady = true)) }
         }
     }
 

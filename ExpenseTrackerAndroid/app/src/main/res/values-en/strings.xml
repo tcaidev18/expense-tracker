@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Expense Tracker</string>
+    <string name="app_name">SpendWise</string>
     <string name="action_retry">Retry</string>
     <string name="state_empty">No data yet</string>
     <string name="expense_list_title">Expense list</string>

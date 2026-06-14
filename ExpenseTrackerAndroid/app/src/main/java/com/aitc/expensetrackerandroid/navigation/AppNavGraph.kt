@@ -9,11 +9,9 @@ import androidx.navigation.navArgument
 import com.aitc.expensetrackerandroid.navigation.Route.ExpenseDetail
 import com.aitc.expensetrackerandroid.navigation.Route.ExpenseList
 import com.aitc.expensetrackerandroid.navigation.Route.Splash
-import com.aitc.expensetrackerandroid.navigation.Route.Start
 import com.aitc.expensetrackerandroid.ui.screens.expensedetail.ExpenseDetailScreen
 import com.aitc.expensetrackerandroid.ui.screens.expenselist.ExpenseListScreen
 import com.aitc.expensetrackerandroid.ui.screens.splash.SplashScreen
-import com.aitc.expensetrackerandroid.ui.screens.start.StartScreen
 
 // SCAFFOLD:IMPORTS
 
@@ -23,9 +21,6 @@ fun AppNavGraph(navController: NavHostController) {
         navController = navController,
         startDestination = Splash.path,
     ) {
-        composable(Start.path) {
-            StartScreen()
-        }
         composable(ExpenseList.path) {
             ExpenseListScreen(
                 onOpenExpenseDetail = { expenseId ->
@@ -34,7 +29,7 @@ fun AppNavGraph(navController: NavHostController) {
             )
         }
         composable(
-            route = ExpenseDetail.pattern,
+            route = ExpenseDetail.path,
             arguments = listOf(
                 navArgument(ExpenseDetail.ARG_EXPENSE_ID) {
                     type = NavType.LongType

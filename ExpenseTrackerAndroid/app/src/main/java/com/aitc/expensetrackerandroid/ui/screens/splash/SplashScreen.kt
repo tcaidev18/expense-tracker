@@ -5,7 +5,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Surface
+import androidx.compose.ui.Modifier
 import com.aitc.expensetrackerandroid.ui.components.state.StateHandler
+import com.aitc.expensetrackerandroid.ui.theme.SplashBackground
 
 @Composable
 fun SplashScreen(
@@ -20,11 +24,16 @@ fun SplashScreen(
         }
     }
 
-    StateHandler(
-        state = state,
-        onRetry = viewModel::onRetry,
-        loading = { SplashContent(showLoading = true) },
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = SplashBackground,
     ) {
-        SplashContent(showLoading = false)
+        StateHandler(
+            state = state,
+            onRetry = viewModel::onRetry,
+            loading = { SplashContent() },
+        ) {
+            SplashContent()
+        }
     }
 }

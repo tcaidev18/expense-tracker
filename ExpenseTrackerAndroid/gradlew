@@ -131,6 +131,20 @@ if [ -n "$JAVA_HOME" ] ; then
 Please set the JAVA_HOME variable in your environment to match the
 location of your Java installation."
     fi
+    # Cursor/VS Code Java extensions ship a JRE without jlink; AGP compileSdk 37 needs a full JDK.
+    if [ ! -x "$JAVA_HOME/bin/jlink" ] ; then
+        for candidate in \
+            "/Applications/Android Studio.app/Contents/jbr/Contents/Home" \
+            "/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home" \
+            "$HOME/Library/Java/JavaVirtualMachines/corretto-17.0.13/Contents/Home"
+        do
+            if [ -x "$candidate/bin/jlink" ] ; then
+                export JAVA_HOME="$candidate"
+                JAVACMD="$JAVA_HOME/bin/java"
+                break
+            fi
+        done
+    fi
 else
     JAVACMD=java
     if ! command -v java >/dev/null 2>&1

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Expense Tracker</string>
+    <string name="app_name">SpendWise</string>
     <string name="action_retry">Thử lại</string>
     <string name="state_empty">Chưa có dữ liệu</string>
     <string name="expense_list_title">Danh sách chi tiêu</string>
