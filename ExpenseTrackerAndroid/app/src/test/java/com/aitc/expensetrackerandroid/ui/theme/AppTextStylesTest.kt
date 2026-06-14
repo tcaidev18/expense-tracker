@@ -17,6 +17,11 @@ class AppTextStylesTest {
     }
 
     @Test
+    fun baseTypography_usesAppFontFamily() {
+        assertEquals(AppFontFamily, baseTypography.bodyLarge.fontFamily)
+    }
+
+    @Test
     fun scaledTypography_increasesFontSize() {
         val baseSize = baseTypography.headlineLarge.fontSize
         val scaledSize = scaledTypography(1.15f).headlineLarge.fontSize
