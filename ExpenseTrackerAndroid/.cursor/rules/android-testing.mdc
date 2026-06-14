@@ -1,0 +1,15 @@
+---
+description: Android unit and instrumented test conventions
+globs: **/*Test.kt
+alwaysApply: false
+---
+
+# Testing
+
+- ViewModel tests: `runTest`, `StandardTestDispatcher`, `Dispatchers.setMain` / `resetMain`
+- Repository tests: `Room.inMemoryDatabaseBuilder` (instrumented) or fake DAO
+- Prefer testing behavior over implementation details
+- Compose UI tests only when interaction logic warrants it
+- Pure utils (`MoneyFormatter`, `DateFormatter`): JVM unit tests in `src/test/`
+
+Run: `./gradlew testDebugUnitTest`

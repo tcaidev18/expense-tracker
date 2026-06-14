@@ -1,0 +1,15 @@
+---
+description: Kotlin and Jetpack Compose conventions
+globs: **/*.kt
+alwaysApply: false
+---
+
+# Kotlin & Compose
+
+- Prefer immutable `data class` for state and models
+- Use `sealed interface` for Route and AppResult variants
+- Composables are stateless; collect `StateFlow` with lifecycle awareness
+- Inject ViewModels with `hiltViewModel()`
+- No hardcoded user-facing strings — use `strings.xml`
+- Format money with `MoneyFormatter`, dates with `DateFormatter`
+- Use theme tokens: `Spacing`, `AppShapes`, MaterialTheme colors

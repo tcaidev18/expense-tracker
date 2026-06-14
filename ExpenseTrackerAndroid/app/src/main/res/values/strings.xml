@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">ExpenseTrackerAndroid</string>
+    <string name="app_name">Expense Tracker</string>
+    <string name="action_retry">Thử lại</string>
+    <string name="state_empty">Chưa có dữ liệu</string>
 </resources>

@@ -1,0 +1,16 @@
+---
+description: MVVM architecture rules for ExpenseTrackerAndroid
+alwaysApply: true
+---
+
+# Android Architecture
+
+- Flow: Screen → ViewModel → Repository → Data (Room / DataStore)
+- Feature ViewModels MUST extend `BaseViewModel`
+- Feature repositories MUST extend `BaseRepository`
+- UI state via `UiState<T>` exposed as `StateFlow`
+- Never call DAO or Repository from Composables
+- Never call DAO from ViewModel directly — go through Repository
+- One-shot operations return `AppResult<T>`; streams return `Flow`
+
+See `docs/ARCHITECTURE.md` and `docs/ADDING_FEATURE.md`.
