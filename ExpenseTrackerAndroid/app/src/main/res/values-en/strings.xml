@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Expense Tracker</string>
+    <string name="action_retry">Retry</string>
+    <string name="state_empty">No data yet</string>
+    <string name="expense_list_title">Expense list</string>
+    <string name="expense_list_empty">No expenses yet</string>
+    <string name="expense_list_open_sample_detail">View sample detail</string>
+    <string name="expense_list_placeholder">Expense list will appear here</string>
+    <string name="expense_detail_title">Expense detail</string>
+    <string name="expense_detail_id_label">Expense ID: %1$d</string>
+    <string name="splash_title">Loading…</string>
+    <string name="splash_tagline">Smart expense management</string>
+</resources>
