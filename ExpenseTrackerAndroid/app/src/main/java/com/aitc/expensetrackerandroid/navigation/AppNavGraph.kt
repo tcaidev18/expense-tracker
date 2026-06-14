@@ -1,36 +1,58 @@
 package com.aitc.expensetrackerandroid.navigation
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.aitc.expensetrackerandroid.R
+import androidx.navigation.navArgument
+import com.aitc.expensetrackerandroid.navigation.Route.ExpenseDetail
+import com.aitc.expensetrackerandroid.navigation.Route.ExpenseList
+import com.aitc.expensetrackerandroid.navigation.Route.Splash
 import com.aitc.expensetrackerandroid.navigation.Route.Start
+import com.aitc.expensetrackerandroid.ui.screens.expensedetail.ExpenseDetailScreen
+import com.aitc.expensetrackerandroid.ui.screens.expenselist.ExpenseListScreen
+import com.aitc.expensetrackerandroid.ui.screens.splash.SplashScreen
+import com.aitc.expensetrackerandroid.ui.screens.start.StartScreen
+
+// SCAFFOLD:IMPORTS
 
 @Composable
 fun AppNavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Start.path,
+        startDestination = Splash.path,
     ) {
         composable(Start.path) {
             StartScreen()
         }
-    }
-}
-
-@Composable
-private fun StartScreen() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(text = stringResource(R.string.app_name))
+        composable(ExpenseList.path) {
+            ExpenseListScreen(
+                onOpenExpenseDetail = { expenseId ->
+                    navController.navigateToExpenseDetail(expenseId)
+                },
+            )
+        }
+        composable(
+            route = ExpenseDetail.pattern,
+            arguments = listOf(
+                navArgument(ExpenseDetail.ARG_EXPENSE_ID) {
+                    type = NavType.LongType
+                },
+            ),
+        ) {
+            ExpenseDetailScreen()
+        }
+        composable(Splash.path) {
+            SplashScreen(
+                onNavigateToMain = {
+                    navController.navigate(ExpenseList.path) {
+                        popUpTo(Splash.path) { inclusive = true }
+                        launchSingleTop = true
+                    }
+                },
+            )
+        }
+        // SCAFFOLD:DESTINATIONS
     }
 }

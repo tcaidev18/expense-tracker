@@ -37,7 +37,7 @@ File-scoped unit test:
 ## Docs
 
 - [Architecture](docs/ARCHITECTURE.md)
-- [Adding a feature](docs/ADDING_FEATURE.md)
+- [Adding a feature](docs/ADDING_FEATURE.md) — checklist + [`scripts/new_screen.sh`](scripts/new_screen.sh) scaffold
 - [Agent workflow](docs/AGENT_WORKFLOW.md)
 - [AGENTS.md](AGENTS.md) — instructions for AI agents
 

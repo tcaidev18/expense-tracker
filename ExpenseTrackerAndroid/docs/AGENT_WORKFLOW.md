@@ -46,6 +46,8 @@ Tạo màn {name}: ViewModel extends BaseViewModel, UiState<T>, StateHandler,
 hiltViewModel(). Không business logic trong Composable.
 ```
 
+Hoặc chạy script (chỉ presentation layer): `./scripts/new_screen.sh {name}` — xem [ADDING_FEATURE.md](ADDING_FEATURE.md#scaffold-screen-presentation-only).
+
 ### Review branch
 
 ```

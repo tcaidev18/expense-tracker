@@ -24,3 +24,7 @@ fun NavController.navigateTopLevel(route: Route) {
         restoreState = true
     }
 }
+
+fun NavController.navigateToExpenseDetail(expenseId: Long) {
+    navigateSingleTop(Route.ExpenseDetail(expenseId))
+}

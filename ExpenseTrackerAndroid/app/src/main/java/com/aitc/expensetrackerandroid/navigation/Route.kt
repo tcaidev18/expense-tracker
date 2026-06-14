@@ -6,4 +6,27 @@ sealed interface Route {
     data object Start : Route {
         override val path: String = "start"
     }
+
+    data object ExpenseList : Route {
+        override val path: String = "expense_list"
+    }
+
+    data object Splash : Route {
+        override val path: String = "splash"
+    }
+
+    data class ExpenseDetail(
+        val expenseId: Long,
+    ) : Route {
+        override val path: String = route(expenseId)
+
+        companion object {
+            const val pattern: String = "expense_detail/{expenseId}"
+            const val ARG_EXPENSE_ID: String = "expenseId"
+
+            fun route(expenseId: Long): String = "expense_detail/$expenseId"
+        }
+    }
+
+    // SCAFFOLD:ROUTES
 }

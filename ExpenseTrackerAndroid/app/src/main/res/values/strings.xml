@@ -2,4 +2,11 @@
     <string name="app_name">Expense Tracker</string>
     <string name="action_retry">Thử lại</string>
     <string name="state_empty">Chưa có dữ liệu</string>
+    <string name="expense_list_title">Danh sách chi tiêu</string>
+    <string name="expense_list_empty">Chưa có khoản chi tiêu nào</string>
+    <string name="expense_list_open_sample_detail">Xem chi tiết mẫu</string>
+    <string name="expense_list_placeholder">Danh sách chi tiêu sẽ hiển thị tại đây</string>
+    <string name="expense_detail_title">Chi tiết chi tiêu</string>
+    <string name="expense_detail_id_label">Mã chi tiêu: %1$d</string>
+    <string name="splash_title">Đang tải…</string>
 </resources>
