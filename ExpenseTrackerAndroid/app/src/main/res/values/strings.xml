@@ -10,4 +10,5 @@
     <string name="expense_detail_id_label">Mã chi tiêu: %1$d</string>
     <string name="splash_title">Đang tải…</string>
     <string name="splash_tagline">Quản lý chi tiêu thông minh</string>
+    <string name="welcome_title">Welcome</string>
 </resources>

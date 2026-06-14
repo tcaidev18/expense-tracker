@@ -6,11 +6,11 @@ import com.aitc.expensetrackerandroid.core.ui.error
 import com.aitc.expensetrackerandroid.core.ui.success
 import com.aitc.expensetrackerandroid.core.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
@@ -30,7 +30,7 @@ class SplashViewModel @Inject constructor(
         launchSafe(onError = { message -> _uiState.updateState { error(message) } }) {
             _uiState.updateState { copy(isLoading = true, errorMessage = null) }
             onIo { delay(SPLASH_DELAY_MS) }
-//            _uiState.updateState { success(SplashUiState(isReady = true)) }
+            _uiState.updateState { success(SplashUiState(isReady = true, firstLaunch = true)) }
         }
     }
 
@@ -41,4 +41,5 @@ class SplashViewModel @Inject constructor(
 
 data class SplashUiState(
     val isReady: Boolean = false,
+    val firstLaunch: Boolean = false,
 )

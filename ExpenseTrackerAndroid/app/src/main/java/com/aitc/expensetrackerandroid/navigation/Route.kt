@@ -24,5 +24,10 @@ sealed interface Route {
         }
     }
 
+    data object Welcome : Route {
+        override val path: String = "welcome"
+    }
+
+
     // SCAFFOLD:ROUTES
 }

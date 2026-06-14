@@ -13,6 +13,9 @@ import com.aitc.expensetrackerandroid.ui.screens.expensedetail.ExpenseDetailScre
 import com.aitc.expensetrackerandroid.ui.screens.expenselist.ExpenseListScreen
 import com.aitc.expensetrackerandroid.ui.screens.splash.SplashScreen
 
+import com.aitc.expensetrackerandroid.navigation.Route.Welcome
+import com.aitc.expensetrackerandroid.ui.screens.welcome.WelcomeScreen
+
 // SCAFFOLD:IMPORTS
 
 @Composable
@@ -46,8 +49,18 @@ fun AppNavGraph(navController: NavHostController) {
                         launchSingleTop = true
                     }
                 },
+                onNavigateToWelcome = {
+                    navController.navigate(Welcome.path) {
+                        popUpTo(Splash.path) { inclusive = true }
+                        launchSingleTop = true
+                    }
+                }
             )
         }
+        composable(Welcome.path) {
+            WelcomeScreen()
+        }
+
         // SCAFFOLD:DESTINATIONS
     }
 }
