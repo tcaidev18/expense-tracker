@@ -19,7 +19,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aitc.expensetrackerandroid.R
 import com.aitc.expensetrackerandroid.ui.components.state.StateHandler
-import com.aitc.expensetrackerandroid.ui.theme.Spacing
+import com.aitc.expensetrackerandroid.ui.theme.appDimens
+import com.aitc.expensetrackerandroid.ui.theme.appTextStyles
 
 @Composable
 fun ExpenseListScreen(
@@ -44,11 +45,17 @@ private fun ExpenseListContent(
     data: ExpenseListUiState,
     onOpenExpenseDetail: (Long) -> Unit,
 ) {
+    val dimens = MaterialTheme.appDimens
+    val textStyles = MaterialTheme.appTextStyles
+
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = stringResource(R.string.expense_list_title))
+                    Text(
+                        text = stringResource(R.string.expense_list_title),
+                        style = textStyles.sectionHeader,
+                    )
                 },
             )
         },
@@ -57,27 +64,31 @@ private fun ExpenseListContent(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(innerPadding),
+                    .padding(innerPadding)
+                    .padding(dimens.screenPadding),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
                     text = stringResource(R.string.expense_list_empty),
-                    style = MaterialTheme.typography.bodyLarge,
+                    style = textStyles.listItemSubtitle,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
                 Button(
                     onClick = { onOpenExpenseDetail(SAMPLE_EXPENSE_ID) },
-                    modifier = Modifier.padding(top = Spacing.medium),
+                    modifier = Modifier.padding(top = dimens.spacingMd),
                 ) {
-                    Text(text = stringResource(R.string.expense_list_open_sample_detail))
+                    Text(
+                        text = stringResource(R.string.expense_list_open_sample_detail),
+                        style = textStyles.button,
+                    )
                 }
             }
         } else {
             Text(
                 text = stringResource(R.string.expense_list_placeholder),
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(innerPadding),
+                style = textStyles.listItemSubtitle,
+                modifier = Modifier.padding(innerPadding).padding(dimens.screenPadding),
             )
         }
     }
