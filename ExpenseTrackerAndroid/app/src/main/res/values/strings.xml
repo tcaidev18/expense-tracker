@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SpendWise</string>
     <string name="action_retry">Thử lại</string>
+    <string name="action_back">Quay lại</string>
     <string name="state_empty">Chưa có dữ liệu</string>
     <string name="expense_list_title">Danh sách chi tiêu</string>
     <string name="expense_list_empty">Chưa có khoản chi tiêu nào</string>
@@ -11,4 +12,13 @@
     <string name="splash_title">Đang tải…</string>
     <string name="splash_tagline">Quản lý chi tiêu thông minh</string>
     <string name="welcome_title">Welcome</string>
+    <string name="debug_title">Debug</string>
+    <string name="debug_fab_content_description">Mở màn hình debug</string>
+    <string name="debug_theme_section">Giao diện</string>
+    <string name="debug_theme_system">Hệ thống</string>
+    <string name="debug_theme_light">Sáng</string>
+    <string name="debug_theme_dark">Tối</string>
+    <string name="debug_language_section">Ngôn ngữ</string>
+    <string name="debug_language_vi">Tiếng Việt</string>
+    <string name="debug_language_en">English</string>
 </resources>

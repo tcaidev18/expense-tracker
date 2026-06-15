@@ -29,5 +29,10 @@ sealed interface Route {
     }
 
 
+    data object Debug : Route {
+        override val path: String = "debug"
+    }
+
+
     // SCAFFOLD:ROUTES
 }

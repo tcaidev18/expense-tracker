@@ -10,6 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -41,7 +42,9 @@ class AppViewModel @Inject constructor(
     fun setLocale(locale: AppLocale) {
         launchSafe {
             onIo { userSettingsRepository.setLocale(locale) }
-            LocaleApplier.apply(locale)
+            withContext(dispatchers.main) {
+                LocaleApplier.apply(locale)
+            }
         }
     }
 }

@@ -16,6 +16,9 @@ import com.aitc.expensetrackerandroid.ui.screens.splash.SplashScreen
 import com.aitc.expensetrackerandroid.navigation.Route.Welcome
 import com.aitc.expensetrackerandroid.ui.screens.welcome.WelcomeScreen
 
+import com.aitc.expensetrackerandroid.navigation.Route.Debug
+import com.aitc.expensetrackerandroid.ui.screens.debug.DebugScreen
+
 // SCAFFOLD:IMPORTS
 
 @Composable
@@ -59,6 +62,10 @@ fun AppNavGraph(navController: NavHostController) {
         }
         composable(Welcome.path) {
             WelcomeScreen()
+        }
+
+        composable(Debug.path) {
+            DebugScreen(onBack = { navController.popBackStack() })
         }
 
         // SCAFFOLD:DESTINATIONS

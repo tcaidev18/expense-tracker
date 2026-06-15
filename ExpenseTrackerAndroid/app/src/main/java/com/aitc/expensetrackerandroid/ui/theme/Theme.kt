@@ -7,6 +7,7 @@ import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 
@@ -43,9 +44,11 @@ fun ExpenseTrackerAndroidThemePreview(
     darkTheme: Boolean = false,
     content: @Composable () -> Unit,
 ) {
-    val configuration = LocalConfiguration.current
+    val windowInfo = LocalWindowInfo.current
+    val height = windowInfo.containerSize.height
+    val width = windowInfo.containerSize.width
     val windowSizeClass = WindowSizeClass.calculateFromSize(
-        DpSize(configuration.screenWidthDp.dp, configuration.screenHeightDp.dp),
+        DpSize(width.dp, height.dp),
     )
     ExpenseTrackerAndroidTheme(
         darkTheme = darkTheme,
