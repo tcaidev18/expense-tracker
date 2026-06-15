@@ -4,7 +4,7 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 
 fun lightAppColorScheme() = lightColorScheme(
-    primary = BrandPrimary,
+    primary = PrimaryColor,
     onPrimary = BrandOnPrimary,
     primaryContainer = BrandPrimaryContainer,
     onPrimaryContainer = BrandOnPrimaryContainer,
@@ -27,7 +27,7 @@ fun lightAppColorScheme() = lightColorScheme(
 )
 
 fun darkAppColorScheme() = darkColorScheme(
-    primary = BrandPrimaryDark,
+    primary = PrimaryColor,
     onPrimary = BrandOnPrimaryDark,
     primaryContainer = BrandPrimaryContainerDark,
     onPrimaryContainer = BrandOnPrimaryContainerDark,
