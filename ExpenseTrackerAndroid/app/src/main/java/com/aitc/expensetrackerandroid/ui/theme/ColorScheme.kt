@@ -4,10 +4,10 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 
 fun lightAppColorScheme() = lightColorScheme(
-    primary = PrimaryColor,
-    onPrimary = BrandOnPrimary,
-    primaryContainer = BrandPrimaryContainer,
-    onPrimaryContainer = BrandOnPrimaryContainer,
+    primary = Primary,
+    onPrimary = OnPrimary,
+    primaryContainer = PrimaryContainer,
+    onPrimaryContainer = OnPrimaryContainer,
     secondary = BrandSecondary,
     onSecondary = BrandOnSecondary,
     secondaryContainer = BrandSecondaryContainer,
@@ -23,14 +23,14 @@ fun lightAppColorScheme() = lightColorScheme(
     surfaceVariant = Gray95,
     onSurfaceVariant = Gray20,
     error = ErrorRed,
-    onError = BrandOnPrimary,
+    onError = OnPrimary,
 )
 
 fun darkAppColorScheme() = darkColorScheme(
-    primary = PrimaryColor,
-    onPrimary = BrandOnPrimaryDark,
-    primaryContainer = BrandPrimaryContainerDark,
-    onPrimaryContainer = BrandOnPrimaryContainerDark,
+    primary = PrimaryDark,
+    onPrimary = OnPrimaryDark,
+    primaryContainer = PrimaryContainerDark,
+    onPrimaryContainer = OnPrimaryContainerDark,
     secondary = BrandSecondaryDark,
     onSecondary = BrandOnSecondaryDark,
     secondaryContainer = BrandSecondaryContainerDark,
@@ -46,5 +46,5 @@ fun darkAppColorScheme() = darkColorScheme(
     surfaceVariant = Gray20,
     onSurfaceVariant = Gray90,
     error = ErrorRed,
-    onError = BrandOnPrimary,
+    onError = OnPrimary,
 )

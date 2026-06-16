@@ -16,6 +16,7 @@ data class AppDimens(
     val iconLarge: Dp,
     val listItemMinHeight: Dp,
     val screenPadding: Dp,
+    val logoSize: Dp,
 )
 
 fun appDimens(dimensScale: Float): AppDimens = AppDimens(
@@ -29,4 +30,5 @@ fun appDimens(dimensScale: Float): AppDimens = AppDimens(
     iconLarge = (32f * dimensScale).dp,
     listItemMinHeight = (56f * dimensScale).dp,
     screenPadding = (Spacing.medium.value * dimensScale).dp,
+    logoSize = (80f * dimensScale).dp,
 )

@@ -24,36 +24,35 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.aitc.expensetrackerandroid.R
+import com.aitc.expensetrackerandroid.ui.theme.ExpenseTrackerAndroidThemePreview
 import com.aitc.expensetrackerandroid.ui.theme.appDimens
 import com.aitc.expensetrackerandroid.ui.theme.appTextStyles
 
 @Composable
 fun WelcomeContent(data: WelcomeUiState, modifier: Modifier = Modifier) {
+    val dimens = MaterialTheme.appDimens
     val pagerState = rememberPagerState(
-        pageCount = { data.slides.size }
+        pageCount = { data.slides.size },
     )
     Column(
-        modifier = modifier
-            .fillMaxSize()
+        modifier = modifier.fillMaxSize(),
     ) {
         WelcomeHeader(modifier = Modifier.defaultPadding())
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(dimens.spacingMd))
         WelcomeBody(
             state = data,
             pagerState = pagerState,
             modifier = Modifier
                 .weight(1f)
-                .fillMaxWidth()
+                .fillMaxWidth(),
         )
         Spacer(modifier = Modifier.weight(1f))
         WelcomeBottom(modifier = Modifier.defaultPadding(), pagerState = pagerState)
-        Spacer(Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(dimens.spacingMd))
     }
 }
 
@@ -62,13 +61,14 @@ fun Modifier.defaultPadding() = this.padding(horizontal = MaterialTheme.appDimen
 
 @Composable
 private fun WelcomeHeader(modifier: Modifier = Modifier) {
-    Row(modifier.padding(vertical = 6.dp)) {
+    val textStyles = MaterialTheme.appTextStyles
+    val dimens = MaterialTheme.appDimens
+
+    Row(modifier.padding(vertical = dimens.spacingXs)) {
         Spacer(modifier = Modifier.weight(1f))
         Text(
-            "Skip", style = MaterialTheme.appTextStyles.caption.copy(
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-            )
+            text = "Skip",
+            style = textStyles.welcomeSkip,
         )
     }
 }
@@ -77,13 +77,15 @@ private fun WelcomeHeader(modifier: Modifier = Modifier) {
 private fun WelcomeBody(
     modifier: Modifier = Modifier,
     state: WelcomeUiState?,
-    pagerState: PagerState
+    pagerState: PagerState,
 ) {
     state ?: return
 
+    val textStyles = MaterialTheme.appTextStyles
+    val dimens = MaterialTheme.appDimens
 
     HorizontalPager(
-        state = pagerState
+        state = pagerState,
     ) {
         val slide = state.slides[it]
         Column(modifier) {
@@ -93,59 +95,61 @@ private fun WelcomeBody(
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(300.dp)
+                    .height(300.dp),
             )
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(dimens.spacingXl))
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = MaterialTheme.appDimens.screenPadding),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .padding(horizontal = dimens.screenPadding),
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
                     text = slide.title,
-                    fontSize = 28.sp,
+                    style = textStyles.welcomeTitle.copy(
+                        color = MaterialTheme.colorScheme.primary
+                    ),
                     textAlign = TextAlign.Center,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.primary,
-                    lineHeight = 40.sp
                 )
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(dimens.spacingSm))
                 Text(
-                    slide.description,
+                    text = slide.description,
+                    style = textStyles.welcomeBody,
                     textAlign = TextAlign.Center,
-                    fontSize = 14.sp
                 )
             }
-
         }
-
-
     }
 }
 
 @Composable
 private fun WelcomeBottom(modifier: Modifier = Modifier, pagerState: PagerState) {
+    val textStyles = MaterialTheme.appTextStyles
+    val colorScheme = MaterialTheme.colorScheme
+    val dimens = MaterialTheme.appDimens
+
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier) {
         Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
             Text(
-                "Continue"
+                text = "Continue",
+                style = textStyles.button,
             )
         }
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(dimens.spacingSm))
         Row {
             repeat(pagerState.pageCount) { index ->
                 Box(
                     modifier = Modifier
-                        .padding(horizontal = 2.dp)
+                        .padding(horizontal = dimens.spacingXs / 2)
                         .size(8.dp)
                         .background(
-                            if (pagerState.currentPage == index)
-                                MaterialTheme.colorScheme.primary
-                            else
-                                Color.Gray,
-                            CircleShape
-                        )
+                            if (pagerState.currentPage == index) {
+                                colorScheme.primary
+                            } else {
+                                colorScheme.onSurfaceVariant
+                            },
+                            CircleShape,
+                        ),
                 )
             }
         }
@@ -155,23 +159,27 @@ private fun WelcomeBottom(modifier: Modifier = Modifier, pagerState: PagerState)
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun WelcomeContentPreview() {
-    WelcomeContent(data = WelcomeUiState(
-        slides = listOf(
-            WelcomeSlide(
-                title = "Track Every Expense",
-                description = "Record your daily spending effortlessly and stay aware of where your money goes.",
-                image = R.drawable.welcome_1
+    ExpenseTrackerAndroidThemePreview {
+        WelcomeContent(
+            data = WelcomeUiState(
+                slides = listOf(
+                    WelcomeSlide(
+                        title = "Track Every Expense",
+                        description = "Record your daily spending effortlessly and stay aware of where your money goes.",
+                        image = R.drawable.welcome_1,
+                    ),
+                    WelcomeSlide(
+                        title = "Plan Smarter Budgets",
+                        description = "Set monthly budgets, monitor your progress, and avoid overspending with ease.",
+                        image = R.drawable.welcome_2,
+                    ),
+                    WelcomeSlide(
+                        title = "Gain Financial Insights",
+                        description = "Visualize spending trends, analyze reports, and make informed financial decisions.",
+                        image = R.drawable.welcome_3,
+                    ),
+                ),
             ),
-            WelcomeSlide(
-                title = "Plan Smarter Budgets",
-                description = "Set monthly budgets, monitor your progress, and avoid overspending with ease.",
-                image = R.drawable.welcome_2
-            ),
-            WelcomeSlide(
-                title = "Gain Financial Insights",
-                description = "Visualize spending trends, analyze reports, and make informed financial decisions.",
-                image = R.drawable.welcome_3
-            )
         )
-    ))
+    }
 }

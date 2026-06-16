@@ -15,7 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.aitc.expensetrackerandroid.R
 import com.aitc.expensetrackerandroid.core.ui.UiState
-import com.aitc.expensetrackerandroid.ui.theme.Spacing
+import com.aitc.expensetrackerandroid.ui.theme.appDimens
+import com.aitc.expensetrackerandroid.ui.theme.appTextStyles
 
 @Composable
 fun <T> StateHandler(
@@ -53,23 +54,28 @@ fun ErrorContent(
     onRetry: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val dimens = MaterialTheme.appDimens
+    val textStyles = MaterialTheme.appTextStyles
+
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(Spacing.large),
+            .padding(dimens.screenPadding),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
             text = message,
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.error,
+            style = textStyles.errorMessage,
         )
         Button(
             onClick = onRetry,
-            modifier = Modifier.padding(top = Spacing.medium),
+            modifier = Modifier.padding(top = dimens.spacingMd),
         ) {
-            Text(text = stringResource(R.string.action_retry))
+            Text(
+                text = stringResource(R.string.action_retry),
+                style = textStyles.button,
+            )
         }
     }
 }
@@ -79,14 +85,15 @@ fun EmptyContent(
     message: String = stringResource(R.string.state_empty),
     modifier: Modifier = Modifier,
 ) {
+    val textStyles = MaterialTheme.appTextStyles
+
     Box(
         modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
         Text(
             text = message,
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            style = textStyles.emptyMessage,
         )
     }
 }

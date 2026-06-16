@@ -6,7 +6,9 @@ import androidx.compose.runtime.staticCompositionLocalOf
 
 val LocalAppDimens = staticCompositionLocalOf { appDimens(dimensScale = 1f) }
 
-val LocalAppTextStyles = staticCompositionLocalOf { appTextStyles(baseTypography) }
+val LocalAppTextStyles = staticCompositionLocalOf {
+    appTextStyles(baseTypography, lightAppColorScheme())
+}
 
 val MaterialTheme.appDimens: AppDimens
     @Composable

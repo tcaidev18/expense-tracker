@@ -13,29 +13,23 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.aitc.expensetrackerandroid.R
 import com.aitc.expensetrackerandroid.ui.theme.ExpenseTrackerAndroidThemePreview
-import com.aitc.expensetrackerandroid.ui.theme.PrimaryColor
-import com.aitc.expensetrackerandroid.ui.theme.SplashBackground
-import com.aitc.expensetrackerandroid.ui.theme.SplashBrandText
+import com.aitc.expensetrackerandroid.ui.theme.appDimens
 import com.aitc.expensetrackerandroid.ui.theme.appTextStyles
-
-private const val SplashLogoSize = 80
 
 @Composable
 fun SplashContent(
     modifier: Modifier = Modifier,
 ) {
+    val dimens = MaterialTheme.appDimens
+    val textStyles = MaterialTheme.appTextStyles
+
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -44,18 +38,14 @@ fun SplashContent(
         Image(
             painter = painterResource(R.drawable.logo),
             contentDescription = null,
-            modifier = Modifier.size(SplashLogoSize.dp),
+            modifier = Modifier.size(dimens.logoSize),
             contentScale = ContentScale.Fit,
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(dimens.spacingMd))
         Text(
             text = stringResource(R.string.app_name),
             textAlign = TextAlign.Center,
-            style = MaterialTheme.appTextStyles.listItemTitle.copy(
-                color = PrimaryColor,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.SemiBold
-            )
+            style = textStyles.splashBrand,
         )
     }
 }
@@ -64,7 +54,7 @@ fun SplashContent(
 @Composable
 private fun SplashContentPreview() {
     ExpenseTrackerAndroidThemePreview {
-        Surface(color = SplashBackground) {
+        Surface(color = MaterialTheme.colorScheme.background) {
             SplashContent()
         }
     }

@@ -72,7 +72,6 @@ private fun ExpenseListContent(
                 Text(
                     text = stringResource(R.string.expense_list_empty),
                     style = textStyles.listItemSubtitle,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
                 Button(
                     onClick = { onOpenExpenseDetail(SAMPLE_EXPENSE_ID) },

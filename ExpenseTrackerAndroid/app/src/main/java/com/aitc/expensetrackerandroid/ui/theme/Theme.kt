@@ -22,7 +22,7 @@ fun ExpenseTrackerAndroidTheme(
     val dimenScale = dimenScaleFor(windowSizeClass.widthSizeClass)
     val typography = scaledTypography(dimenScale.textScale)
     val appDimens = appDimens(dimenScale.dimensScale)
-    val appTextStyles = appTextStyles(typography)
+    val appTextStyles = appTextStyles(typography, colorScheme)
 
     CompositionLocalProvider(
         LocalExtendedColors provides extendedColors,

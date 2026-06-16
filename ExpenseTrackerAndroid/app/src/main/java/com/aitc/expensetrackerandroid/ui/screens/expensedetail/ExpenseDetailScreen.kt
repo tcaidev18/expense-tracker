@@ -16,7 +16,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aitc.expensetrackerandroid.R
 import com.aitc.expensetrackerandroid.ui.components.state.StateHandler
-import com.aitc.expensetrackerandroid.ui.theme.Spacing
+import com.aitc.expensetrackerandroid.ui.theme.appDimens
+import com.aitc.expensetrackerandroid.ui.theme.appTextStyles
 
 @Composable
 fun ExpenseDetailScreen(
@@ -34,11 +35,17 @@ fun ExpenseDetailScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ExpenseDetailContent(data: ExpenseDetailUiState) {
+    val dimens = MaterialTheme.appDimens
+    val textStyles = MaterialTheme.appTextStyles
+
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = stringResource(R.string.expense_detail_title))
+                    Text(
+                        text = stringResource(R.string.expense_detail_title),
+                        style = textStyles.sectionHeader,
+                    )
                 },
             )
         },
@@ -47,24 +54,24 @@ private fun ExpenseDetailContent(data: ExpenseDetailUiState) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(Spacing.medium),
+                .padding(dimens.screenPadding),
         ) {
             Text(
                 text = stringResource(R.string.expense_detail_id_label, data.expenseId),
-                style = MaterialTheme.typography.titleMedium,
+                style = textStyles.listItemTitle,
             )
             if (data.title.isNotEmpty()) {
                 Text(
                     text = data.title,
-                    style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.padding(top = Spacing.small),
+                    style = textStyles.listItemSubtitle,
+                    modifier = Modifier.padding(top = dimens.spacingSm),
                 )
             }
             if (data.amountLabel.isNotEmpty()) {
                 Text(
                     text = data.amountLabel,
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.padding(top = Spacing.small),
+                    style = textStyles.amountStandard,
+                    modifier = Modifier.padding(top = dimens.spacingSm),
                 )
             }
         }
